@@ -1,1 +1,0 @@
-sConfig.php
