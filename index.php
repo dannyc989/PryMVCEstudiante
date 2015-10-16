@@ -8,6 +8,7 @@
 
 	Config\Autoload::run();
 	$est = new Models\Estudiante();
+	echo "Dannyc es bacán";
 	//$est->hola();
 	//$est = new Models\Estudiante();
 	//$est->hola();
