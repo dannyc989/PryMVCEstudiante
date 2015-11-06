@@ -10,13 +10,13 @@
 		private $fecha;
 		private $con;
 
-		public function hola(){
-			echo "hola";
-		}
+		// public function hola(){
+		// 	echo "hola";
+		// }
 		
-/*		public function __construct(){
+		public function __construct(){
 			$this->con = new Conexion();
-		}*/
+		}
 
 		public function set($atributo,$contenido){
 			$this->$atributo = $contenido;
@@ -27,11 +27,22 @@
 		}
 
 		public function listar(){
+
 			$sql = "SELECT t1.*, t2.nombre as nombre_seccion
 					FROM estudiantes t1
-					INNER JOIN secciones t2
-					ON t1.id_seccion = t2.id_seccion ";
+					LEFT OUTER JOIN secciones t2
+					ON t1.id_seccion = t2.id ";
+					//print($sql);
 			$datos = $this->con->consultaRetorno($sql);
+/*
+			while ($row =  $datos->fetch_assoc()) {
+				$out[] = $row;
+			};
+
+		    print json_encode($out);
+		    print  "</br>";*/
+
+
 			return $datos;
 		}
 
@@ -52,7 +63,7 @@
 		}
 
 		public function edit(){
-			$sql = "UPDATE FROM " . tabla . " SET nombre = '{$this->nombre}',
+			$sql = "UPDATE " . tabla . " SET nombre = '{$this->nombre}',
 			 edad = '{$this->edad}',promedio = '{$this->promedio}',
 			 imagen = '{$this->imagen}',id_seccion = '{$this->id_seccion}'
 			 WHERE id = '{$this->id}'
@@ -63,12 +74,15 @@
 		public function view(){
 			$sql = "SELECT t1.*, t2.nombre as nombre_seccion
 					FROM estudiantes t1
-					INNER JOIN secciones t2
-					ON t1.id_seccion = t2.id_seccion
+					LEFT OUTER JOIN secciones t2
+					ON t1.id_seccion = t2.id
 					WHERE t1.id = '{$this->id}'
 					 ";
+					 //echo $sql;
 			$datos = $this->con->consultaRetorno($sql);
+
 			$row = mysqli_fetch_assoc($datos);
+			
 			return $row;
 
 		}
