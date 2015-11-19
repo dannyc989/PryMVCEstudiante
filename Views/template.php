@@ -10,8 +10,9 @@
 	<html lang="es">
 	<head>
 		<meta charset="UTF-8">
-		<title>Administración de estudiantes | Codigo Facilito</title>
+		<title>Administración de estudiantes</title>
 		<link rel="stylesheet" href="<?php echo URL; ?>Views/template/css/bootstrap.css">
+		<link rel="stylesheet" href="<?php echo URL; ?>Views/template/css/general.css">
 
 	</head>
 	<body>

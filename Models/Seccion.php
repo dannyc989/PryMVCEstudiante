@@ -2,10 +2,13 @@
 	class Seccion{
 
 		const tabla = "secciones";
+
+
 		private $id;
 		private $nombre;
 
 		public function __construct(){
+			$this->TblClase = "secciones";
 			$this->con = new Conexion();
 		}
 
@@ -18,7 +21,7 @@
 		}
 
 		public function listar(){
-			$sql = "SELECT * FROM " . tabla;
+			$sql = "SELECT * FROM " . self::tabla;
 			$datos = $this->con->consultaRetorno($sql);
 			return $datos;
 		}
